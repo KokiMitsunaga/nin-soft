@@ -3,7 +3,7 @@ import { HiChevronDoubleDown } from "react-icons/hi";
 const ScrollPrompt = () => {
   return (
     <div className="flex justify-center mt-12">
-      <div className="animate-bounce text-white">
+      <div className="animate-bounce text-pink-200">
         <HiChevronDoubleDown size={40} />
       </div>
     </div>
