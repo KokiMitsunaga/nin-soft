@@ -4,10 +4,8 @@ import UnderGround from "./_components/UnderGround";
 
 const page = () => {
   return (
-    <div className="relative">
-      <div className="sticky top-0 z-20">
-        <Top />
-      </div>
+    <div>
+      <Top />
       <UnderGround />
     </div>
   );
