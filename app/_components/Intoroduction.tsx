@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Nunito_Sans } from "next/font/google";
 import ListButton from "./ListButton";
 import GenreSelectBox from "./GenreSelectBox";
+import gamesData from "../data/gamesData.json";
 
 // ゲーム情報の型定義
 interface GameInfo {
@@ -27,244 +28,33 @@ const Intoroduction = () => {
   const [backgroundPosition, setBackgroundPosition] = useState(0);
   const [comment, setComment] = useState("");
   const [scrollCompleted, setScrollCompleted] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState("ラインナップ");
+  const [selectedGenre, setSelectedGenre] = useState<
+    "ラインナップ" | "発売中" | "今後発売"
+  >("ラインナップ");
 
-  // 動的に変更される状態
-  const [bgImage, setBgImage] = useState("/underground.jpg");
-  const [gameInfo, setGameInfo] = useState<GameInfo[]>([
-    {
-      id: 1,
-      image: "/game.jpg",
-      alt: "ゲーム1",
-      description: "ゲーム1の説明",
-      url: "/game1",
-    },
-    {
-      id: 2,
-      image: "/game.jpg",
-      alt: "ゲーム2",
-      description: "ゲーム2の説明",
-      url: "/game2",
-    },
-    {
-      id: 3,
-      image: "/game.jpg",
-      alt: "ゲーム3",
-      description: "ゲーム3の説明",
-      url: "/game3",
-    },
-    {
-      id: 34,
-      image: "/game.jpg",
-      alt: "ゲーム4",
-      description: "ゲーム4の説明",
-      url: "/game4",
-    },
-    {
-      id: 5,
-      image: "/game.jpg",
-      alt: "ゲーム5",
-      description: "ゲーム5の説明",
-      url: "/game5",
-    },
-    {
-      id: 6,
-      image: "/game.jpg",
-      alt: "ゲーム6",
-      description: "ゲーム6の説明",
-      url: "/game6",
-    },
-  ]); // 型を指定
-  const [commentList, setCommentList] = useState<string[]>([
-    "ラインナップのコメント1",
-    "ラインナップのコメント2",
-    "ラインナップのコメント3",
-    "ラインナップのコメント4",
-    "ラインナップのコメント5",
-    "ラインナップのコメント6",
-  ]); // 型を指定
-  const [humanImage, setHumanImage] = useState("/human.png");
+  // 初期状態を gamesData から取得
+  const [bgImage, setBgImage] = useState(gamesData[selectedGenre].bgImage);
+  const [gameInfo, setGameInfo] = useState<GameInfo[]>(
+    gamesData[selectedGenre].gameInfo
+  );
+  const [commentList, setCommentList] = useState<string[]>(
+    gamesData[selectedGenre].commentList
+  );
+  const [humanImage, setHumanImage] = useState(
+    gamesData[selectedGenre].humanImage
+  );
 
-  const handleSelectChange = (value: string) => {
+  const handleSelectChange = (
+    value: "ラインナップ" | "発売中" | "今後発売"
+  ) => {
     setSelectedGenre(value);
     console.log("選択されたジャンル:", value);
 
     // ジャンルに応じて状態を更新
-    switch (value) {
-      case "ラインナップ":
-        setBgImage("/underground.jpg");
-        setGameInfo([
-          {
-            id: 1,
-            image: "/game.jpg",
-            alt: "ゲーム1",
-            description: "ゲーム1の説明",
-            url: "/game1",
-          },
-          {
-            id: 2,
-            image: "/game.jpg",
-            alt: "ゲーム2",
-            description: "ゲーム2の説明",
-            url: "/game2",
-          },
-          {
-            id: 3,
-            image: "/game.jpg",
-            alt: "ゲーム3",
-            description: "ゲーム3の説明",
-            url: "/game3",
-          },
-          {
-            id: 34,
-            image: "/game.jpg",
-            alt: "ゲーム4",
-            description: "ゲーム4の説明",
-            url: "/game4",
-          },
-          {
-            id: 5,
-            image: "/game.jpg",
-            alt: "ゲーム5",
-            description: "ゲーム5の説明",
-            url: "/game5",
-          },
-          {
-            id: 6,
-            image: "/game.jpg",
-            alt: "ゲーム6",
-            description: "ゲーム6の説明",
-            url: "/game6",
-          },
-        ]);
-        setCommentList([
-          "ラインナップのコメント1",
-          "ラインナップのコメント2",
-          "ラインナップのコメント3",
-          "ラインナップのコメント4",
-          "ラインナップのコメント5",
-          "ラインナップのコメント6",
-        ]);
-        setHumanImage("/human.png");
-        break;
-
-      case "発売中":
-        setBgImage("/undersea.jpg");
-        setGameInfo([
-          {
-            id: 1,
-            image: "/game.jpg",
-            alt: "ゲーム1",
-            description: "ゲーム1の説明",
-            url: "/game1",
-          },
-          {
-            id: 2,
-            image: "/game.jpg",
-            alt: "ゲーム2",
-            description: "ゲーム2の説明",
-            url: "/game2",
-          },
-          {
-            id: 3,
-            image: "/game.jpg",
-            alt: "ゲーム3",
-            description: "ゲーム3の説明",
-            url: "/game3",
-          },
-          {
-            id: 34,
-            image: "/game.jpg",
-            alt: "ゲーム4",
-            description: "ゲーム4の説明",
-            url: "/game4",
-          },
-          {
-            id: 5,
-            image: "/game.jpg",
-            alt: "ゲーム5",
-            description: "ゲーム5の説明",
-            url: "/game5",
-          },
-          {
-            id: 6,
-            image: "/game.jpg",
-            alt: "ゲーム6",
-            description: "ゲーム6の説明",
-            url: "/game6",
-          },
-        ]);
-        setCommentList([
-          "ラインナップのコメント1",
-          "ラインナップのコメント2",
-          "ラインナップのコメント3",
-          "ラインナップのコメント4",
-          "ラインナップのコメント5",
-          "ラインナップのコメント6",
-        ]);
-        setHumanImage("/swimHuman.png");
-        break;
-
-      case "今後発売":
-        setBgImage("/magma.jpg");
-        setGameInfo([
-          {
-            id: 1,
-            image: "/game.jpg",
-            alt: "ゲーム1",
-            description: "ゲーム1の説明",
-            url: "/game1",
-          },
-          {
-            id: 2,
-            image: "/game.jpg",
-            alt: "ゲーム2",
-            description: "ゲーム2の説明",
-            url: "/game2",
-          },
-          {
-            id: 3,
-            image: "/game.jpg",
-            alt: "ゲーム3",
-            description: "ゲーム3の説明",
-            url: "/game3",
-          },
-          {
-            id: 34,
-            image: "/game.jpg",
-            alt: "ゲーム4",
-            description: "ゲーム4の説明",
-            url: "/game4",
-          },
-          {
-            id: 5,
-            image: "/game.jpg",
-            alt: "ゲーム5",
-            description: "ゲーム5の説明",
-            url: "/game5",
-          },
-          {
-            id: 6,
-            image: "/game.jpg",
-            alt: "ゲーム6",
-            description: "ゲーム6の説明",
-            url: "/game6",
-          },
-        ]);
-        setCommentList([
-          "ラインナップのコメント1",
-          "ラインナップのコメント2",
-          "ラインナップのコメント3",
-          "ラインナップのコメント4",
-          "ラインナップのコメント5",
-          "ラインナップのコメント6",
-        ]);
-        setHumanImage("/flyHuman.png");
-        break;
-
-      default:
-        break;
-    }
+    setBgImage(gamesData[value].bgImage);
+    setGameInfo(gamesData[value].gameInfo);
+    setCommentList(gamesData[value].commentList);
+    setHumanImage(gamesData[value].humanImage);
   };
 
   useEffect(() => {
