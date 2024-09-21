@@ -154,26 +154,6 @@ const Intoroduction = () => {
     };
   }, [scrollCompleted, gameInfo, commentList]);
 
-  useEffect(() => {
-    const handleTouchMove = (event: TouchEvent) => {
-      if (scrollContainerRef.current && intoroductionRef.current) {
-        const touch = event.touches[0];
-        scrollContainerRef.current.scrollLeft -= touch.clientY * 0.8;
-      }
-    };
-
-    scrollContainerRef.current?.addEventListener("touchmove", handleTouchMove, {
-      passive: false,
-    });
-
-    return () => {
-      scrollContainerRef.current?.removeEventListener(
-        "touchmove",
-        handleTouchMove
-      );
-    };
-  }, [scrollCompleted]);
-
   return (
     <div ref={intoroductionRef} className="relative w-full h-screen z-20">
       <div
