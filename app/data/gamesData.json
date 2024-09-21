@@ -4,54 +4,54 @@
     "gameInfo": [
       {
         "id": 1,
-        "image": "/game.jpg",
-        "alt": "ゲーム1",
-        "description": "ゲーム1の説明",
-        "url": "/game1"
+        "image": "/horizon.jpeg",
+        "alt": "ミスティックホライゾン",
+        "description": "古代文明の謎を解き明かす冒険RPG",
+        "url": "/example"
       },
       {
         "id": 2,
-        "image": "/game.jpg",
-        "alt": "ゲーム2",
-        "description": "ゲーム2の説明",
-        "url": "/game2"
+        "image": "/cyber.jpeg",
+        "alt": "サイバーナイト",
+        "description": "未来都市を守るサイボーグ戦士の戦い",
+        "url": "/example"
       },
       {
         "id": 3,
-        "image": "/game.jpg",
-        "alt": "ゲーム3",
-        "description": "ゲーム3の説明",
-        "url": "/game3"
+        "image": "/shadow.jpeg",
+        "alt": "シャドウブレード",
+        "description": "忍者が暗闇で繰り広げる剣術アクション",
+        "url": "/example"
       },
       {
         "id": 4,
-        "image": "/game.jpg",
-        "alt": "ゲーム4",
-        "description": "ゲーム4の説明",
-        "url": "/game4"
+        "image": "/wind.jpeg",
+        "alt": "エターナルウィンド",
+        "description": "風の精霊が導く壮大な冒険ファンタジー",
+        "url": "/example"
       },
       {
         "id": 5,
-        "image": "/game.jpg",
-        "alt": "ゲーム5",
-        "description": "ゲーム5の説明",
-        "url": "/game5"
+        "image": "/krono.jpeg",
+        "alt": "クロノシフター",
+        "description": "時空を超えて戦うパズル＆アクション",
+        "url": "/example"
       },
       {
         "id": 6,
-        "image": "/game.jpg",
-        "alt": "ゲーム6",
-        "description": "ゲーム6の説明",
-        "url": "/game6"
+        "image": "/soul.jpeg",
+        "alt": "ソウルハンターズ",
+        "description": "魂を狩る者たちのダークファンタジーRPG",
+        "url": "/example"
       }
     ],
     "commentList": [
-      "コメント1",
-      "コメント2",
-      "コメント3",
-      "コメント4",
-      "コメント5",
-      "コメント6"
+      "アンティークな冒険だね！古代の力、感じるよ！",
+      "未来のオレもこんなカッコいいアーマー着るのかな？",
+      "おっと、暗闇でもジャンプは忘れずに！",
+      "風が気持ちいいね！冒険にピッタリさ！",
+      "時間を超えるなんて…ワープゾーンみたいだね！",
+      "うーん、ちょっとダークだけどオレも頑張るよ！"
     ],
     "humanImage": "/human.png"
   },
@@ -60,54 +60,54 @@
     "gameInfo": [
       {
         "id": 1,
-        "image": "/game.jpg",
-        "alt": "ゲーム1",
-        "description": "ゲーム1の説明",
-        "url": "/game1"
+        "image": "/astral.jpeg",
+        "alt": "アストラルクエスト",
+        "description": "星々の力を借りて世界を救う冒険物語",
+        "url": "/example"
       },
       {
         "id": 2,
-        "image": "/game.jpg",
-        "alt": "ゲーム2",
-        "description": "ゲーム2の説明",
-        "url": "/game2"
+        "image": "/metal.jpeg",
+        "alt": "メタルフォージ",
+        "description": "強大なロボットを鍛え、闘わせるシミュレーション",
+        "url": "/example"
       },
       {
         "id": 3,
-        "image": "/game.jpg",
-        "alt": "ゲーム3",
-        "description": "ゲーム3の説明",
-        "url": "/game3"
+        "image": "/death.jpeg",
+        "alt": "デスノヴァ",
+        "description": "宇宙の終焉から生き残るサバイバルアクション",
+        "url": "/example"
       },
       {
         "id": 4,
-        "image": "/game.jpg",
-        "alt": "ゲーム4",
-        "description": "ゲーム4の説明",
-        "url": "/game4"
+        "image": "/frost.jpeg",
+        "alt": "フロストバウンド",
+        "description": "氷の世界で生き残りをかけた探索アドベンチャー",
+        "url": "/example"
       },
       {
         "id": 5,
-        "image": "/game.jpg",
-        "alt": "ゲーム5",
-        "description": "ゲーム5の説明",
-        "url": "/game5"
+        "image": "/ocean.jpeg",
+        "alt": "サイレントオーシャン",
+        "description": "深海の謎を解き明かす海洋探索シミュレーション",
+        "url": "/example"
       },
       {
         "id": 6,
-        "image": "/game.jpg",
-        "alt": "ゲーム6",
-        "description": "ゲーム6の説明",
-        "url": "/game6"
+        "image": "/rift.jpeg",
+        "alt": "ファントムリフト",
+        "description": "異次元の裂け目を封じる壮絶な戦い",
+        "url": "/example"
       }
     ],
     "commentList": [
-      "コメント1",
-      "コメント2",
-      "コメント3",
-      "コメント4",
-      "コメント5",
-      "コメント6"
+      "星の力？スターマンが大活躍しそうだね！",
+      "ロボットもいいけど、オレのハンマーも負けてないよ！",
+      "宇宙の終わり？そんな時でもキノコを探さなきゃ！",
+      "氷の世界？弟が震えそうだね！",
+      "深海探検か…おっと、オレの酸素メーターは大丈夫かな？",
+      "異次元？オレのパワーアップも異次元級だよ！"
     ],
     "humanImage": "/swimHuman.png"
   },
@@ -116,54 +116,54 @@
     "gameInfo": [
       {
         "id": 1,
-        "image": "/game.jpg",
-        "alt": "ゲーム1",
-        "description": "ゲーム1の説明",
-        "url": "/game1"
+        "image": "/neon.jpeg",
+        "alt": "ネオンチェイサー",
+        "description": "ネオン街を駆け抜ける未来のレーシングゲーム",
+        "url": "/example"
       },
       {
         "id": 2,
-        "image": "/game.jpg",
-        "alt": "ゲーム2",
-        "description": "ゲーム2の説明",
-        "url": "/game2"
+        "image": "/dream.jpeg",
+        "alt": "ドリームスカイ",
+        "description": "夢の中の世界を探索する幻想的なアドベンチャー",
+        "url": "/example"
       },
       {
         "id": 3,
-        "image": "/game.jpg",
-        "alt": "ゲーム3",
-        "description": "ゲーム3の説明",
-        "url": "/game3"
+        "image": "/dragon.jpeg",
+        "alt": "ドラゴンバスターズ",
+        "description": "ドラゴンを狩るハンターたちのアクションRPG",
+        "url": "/example"
       },
       {
         "id": 4,
-        "image": "/game.jpg",
-        "alt": "ゲーム4",
-        "description": "ゲーム4の説明",
-        "url": "/game4"
+        "image": "/tera.jpeg",
+        "alt": "テラフォールン",
+        "description": "崩れゆく大地を救うためのリアルタイム戦略",
+        "url": "/example"
       },
       {
         "id": 5,
-        "image": "/game.jpg",
-        "alt": "ゲーム5",
-        "description": "ゲーム5の説明",
-        "url": "/game5"
+        "image": "/ghost.jpeg",
+        "alt": "ゴーストシーカー",
+        "description": "霊的な存在と対峙するミステリーアクション",
+        "url": "/example"
       },
       {
         "id": 6,
-        "image": "/game.jpg",
-        "alt": "ゲーム6",
-        "description": "ゲーム6の説明",
-        "url": "/game6"
+        "image": "/force.jpeg",
+        "alt": "フォースリンク",
+        "description": "心の力を使って闘う未来系格闘ゲーム",
+        "url": "/example"
       }
     ],
     "commentList": [
-      "コメント1",
-      "コメント2",
-      "コメント3",
-      "コメント4",
-      "コメント5",
-      "コメント6"
+      "レーシング？カートに乗っても負けないよ！",
+      "夢の中か…あの夢世界みたいだね！楽しいぞ！",
+      "ドラゴン退治？よーし、ファイアーで応戦だ！",
+      "地面が崩れる？おっと、足元に注意だね！",
+      "おばけ退治なら、弟に任せるか…いや、オレが行く！",
+      "心の力？オレも気合い入れてジャンプするよ！"
     ],
     "humanImage": "/flyHuman.png"
   }

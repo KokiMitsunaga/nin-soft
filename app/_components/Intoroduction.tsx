@@ -54,10 +54,11 @@ const Intoroduction = () => {
     setCommentList(gamesData[value].commentList);
     setHumanImage(gamesData[value].humanImage);
 
-    // 横スクロール位置をリセット
+    // 横スクロール位置と背景位置をリセット
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft = 0;
     }
+    setBackgroundPosition(0); // 背景位置をリセット
 
     // コメントもリセットして最初のコンテンツに対応するコメントを表示
     setComment(gamesData[value].commentList[0]);
@@ -146,20 +147,25 @@ const Intoroduction = () => {
           }}
         />
 
+        {/* ジャンル表示 */}
+        <div className="absolute top-10 left-0 w-full h-16 flex items-center justify-center z-40 bg-black bg-opacity-50 text-white text-2xl font-bold">
+          {selectedGenre}
+        </div>
+
         <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-start z-30">
           {/* 横スクロールコンテナ */}
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-hidden whitespace-nowrap w-full px-8 space-x-96 scroll-container"
-            style={{ paddingLeft: "16vw", paddingRight: "16vw" }} // 左に少し余白を調整
+            className="flex overflow-x-hidden overflow-y-hidden whitespace-nowrap w-full px-8 space-x-96 scroll-container"
+            style={{ paddingLeft: "16vw", paddingRight: "16vw" }}
           >
             {gameInfo.map((game) => (
               <Link href={`${game.url}`} key={game.id}>
                 <div
-                  className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-10 rounded-3xl" // 背景白、パディング追加
+                  className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-10 rounded-3xl"
                   style={{
                     width: "calc(100vw / 2)",
-                    marginTop: "calc(100vh - 95vh)",
+                    marginTop: "calc(100vh - 90vh)",
                   }}
                 >
                   <Image
@@ -168,7 +174,7 @@ const Intoroduction = () => {
                     layout="responsive"
                     width={900}
                     height={600}
-                    className="object-cover rounded-3xl w-full h-full"
+                    className="rounded-3xl w-full h-full"
                   />
                   {/* タイトルと説明を重ねて表示 */}
                   <div
@@ -191,7 +197,7 @@ const Intoroduction = () => {
           <div
             className="flex items-center"
             style={{
-              marginTop: "calc(100vh - 98vh)",
+              marginTop: "calc(100vh - 95vh)",
               marginLeft: "calc(100vw - 94vw)",
             }}
           >
