@@ -67,10 +67,10 @@ const Intoroduction = () => {
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
       const scrollContainer = scrollContainerRef.current;
-      const intoroductioin = intoroductionRef.current;
+      const intoroduction = intoroductionRef.current;
 
-      if (scrollContainer && intoroductioin) {
-        const rect = intoroductioin.getBoundingClientRect();
+      if (scrollContainer && intoroduction) {
+        const rect = intoroduction.getBoundingClientRect();
         const isIntoroductionInView =
           rect.top <= 0 && rect.bottom >= window.innerHeight;
 
@@ -78,8 +78,8 @@ const Intoroduction = () => {
           // 横スクロール操作
           scrollContainer.scrollLeft += event.deltaY;
 
-          // スクロール方向に応じて背景位置を進める・戻す
-          const scrollFactor = 0.2; // 背景が進むスピード
+          // 背景位置の更新
+          const scrollFactor = 0.2;
           setBackgroundPosition(
             (prevPosition) => prevPosition - event.deltaY * scrollFactor
           );
@@ -87,16 +87,14 @@ const Intoroduction = () => {
           const contentWidth = scrollContainer.clientWidth / 1.3;
           const scrollLeft = scrollContainer.scrollLeft;
 
-          // スクロール位置に基づいて表示するコメントを更新
+          // コメントの更新
           const visibleIndex = Math.min(
-            Math.round(scrollLeft / contentWidth), // 変更: Math.floor から Math.round へ
+            Math.round(scrollLeft / contentWidth),
             gameInfo.length - 1
           );
-
-          // コメントの更新
           setComment(commentList[visibleIndex]);
 
-          // スクロールがコンテンツの終わりに到達した場合
+          // スクロールがコンテンツの終わりに達した場合の処理
           if (
             scrollLeft + scrollContainer.clientWidth >=
             scrollContainer.scrollWidth
@@ -106,7 +104,7 @@ const Intoroduction = () => {
             setScrollCompleted(false);
           }
 
-          // スクロールがコンテンツの最初または最後で止まる処理
+          // 横スクロールの制御
           if (
             (scrollLeft === 0 && event.deltaY < 0 && !scrollCompleted) ||
             (scrollLeft + scrollContainer.clientWidth ===
@@ -117,16 +115,7 @@ const Intoroduction = () => {
             return;
           }
 
-          // コンテンツが最初や最後に達したときに背景の動きを止める
-          if (
-            scrollLeft === 0 ||
-            scrollLeft + scrollContainer.clientWidth ===
-              scrollContainer.scrollWidth
-          ) {
-            return;
-          }
-
-          // コンテンツが途中の場合は背景の動きを継続
+          // スクロールを途中で止める処理
           if (scrollLeft > 0 && event.deltaY < 0) {
             event.preventDefault();
           }
@@ -134,23 +123,25 @@ const Intoroduction = () => {
       }
     };
 
-    const handleGlobalScroll = (event: WheelEvent) => {
+    const handleTouchMove = (event: TouchEvent) => {
       const scrollContainer = scrollContainerRef.current;
-      if (
-        scrollContainer &&
-        scrollContainer.scrollLeft > 0 &&
-        !scrollCompleted
-      ) {
-        event.preventDefault();
+      if (scrollContainer) {
+        const touch = event.touches[0];
+        const deltaY = touch.clientY - touch.screenY;
+
+        // 横スクロール操作
+        scrollContainer.scrollLeft += deltaY;
+
+        event.preventDefault(); // 縦スクロールを防止
       }
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("wheel", handleGlobalScroll, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("wheel", handleGlobalScroll);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [scrollCompleted, gameInfo, commentList]);
 
