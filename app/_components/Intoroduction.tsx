@@ -32,6 +32,8 @@ const Intoroduction = () => {
     "ラインナップ" | "発売中" | "今後発売"
   >("ラインナップ");
 
+  const [isInView, setIsInView] = useState(false); // ビューポートに入ったかどうかを追跡
+
   // 初期状態を gamesData から取得
   const [bgImage, setBgImage] = useState(gamesData[selectedGenre].bgImage);
   const [gameInfo, setGameInfo] = useState<GameInfo[]>(
@@ -73,6 +75,9 @@ const Intoroduction = () => {
         const rect = intoroduction.getBoundingClientRect();
         const isIntoroductionInView =
           rect.top <= 0 && rect.bottom >= window.innerHeight;
+
+        // Intoroductionがビューポートに入ったかを更新
+        setIsInView(isIntoroductionInView);
 
         if (isIntoroductionInView) {
           // 横スクロール操作
@@ -144,6 +149,15 @@ const Intoroduction = () => {
       window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [scrollCompleted, gameInfo, commentList]);
+
+  useEffect(() => {
+    // Intoroductionがビューポートに入った時、縦スクロールを無効化
+    if (isInView) {
+      document.body.style.overflowY = "hidden"; // 縦スクロールを無効化
+    } else {
+      document.body.style.overflowY = "auto"; // 縦スクロールを有効化
+    }
+  }, [isInView]);
 
   return (
     <div ref={intoroductionRef} className="relative w-full h-screen z-20">
