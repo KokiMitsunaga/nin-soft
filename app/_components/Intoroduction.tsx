@@ -171,9 +171,18 @@ const Intoroduction = () => {
                     className="object-cover rounded-3xl w-full h-full"
                   />
                   {/* タイトルと説明を重ねて表示 */}
-                  <div className="link-content absolute bottom-0 left-0 w-full p-20 bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-lg">
-                    <h3 className="font-bold text-3xl">{game.alt}</h3>
-                    <p className="text-xl mt-2">{game.description}</p>
+                  <div
+                    className="link-content absolute bottom-0 left-0 w-full bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-lg"
+                    style={{
+                      padding: "calc(100vh - 95vh)",
+                    }}
+                  >
+                    <h3 className="font-bold text-xl 2xl:text-2xl">
+                      {game.alt}
+                    </h3>
+                    <p className="text-base 2xl:text-lg mt-2">
+                      {game.description}
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -188,7 +197,13 @@ const Intoroduction = () => {
           >
             {/* 人物画像 */}
             <div className="z-30 flex justify-center items-center">
-              <div className="relative w-72 h-72 overflow-hidden rounded-full">
+              <div
+                className="relative overflow-hidden rounded-full"
+                style={{
+                  width: "calc(100vh - 88vh)",
+                  height: "calc(100vw - 88vw)",
+                }}
+              >
                 <Image
                   alt="human"
                   src={humanImage}
