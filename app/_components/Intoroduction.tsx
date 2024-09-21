@@ -54,10 +54,11 @@ const Intoroduction = () => {
     setCommentList(gamesData[value].commentList);
     setHumanImage(gamesData[value].humanImage);
 
-    // 横スクロール位置をリセット
+    // 横スクロール位置と背景位置をリセット
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft = 0;
     }
+    setBackgroundPosition(0); // 背景位置をリセット
 
     // コメントもリセットして最初のコンテンツに対応するコメントを表示
     setComment(gamesData[value].commentList[0]);
@@ -146,6 +147,11 @@ const Intoroduction = () => {
           }}
         />
 
+        {/* ジャンル表示 */}
+        <div className="absolute top-10 left-0 w-full h-16 flex items-center justify-center z-40 bg-black bg-opacity-50 text-white text-2xl font-bold">
+          {selectedGenre}
+        </div>
+
         <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-start z-30">
           {/* 横スクロールコンテナ */}
           <div
@@ -159,7 +165,7 @@ const Intoroduction = () => {
                   className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-10 rounded-3xl" // 背景白、パディング追加
                   style={{
                     width: "calc(100vw / 2)",
-                    marginTop: "calc(100vh - 95vh)",
+                    marginTop: "calc(100vh - 90vh)",
                   }}
                 >
                   <Image
@@ -191,7 +197,7 @@ const Intoroduction = () => {
           <div
             className="flex items-center"
             style={{
-              marginTop: "calc(100vh - 98vh)",
+              marginTop: "calc(100vh - 95vh)",
               marginLeft: "calc(100vw - 94vw)",
             }}
           >
