@@ -32,8 +32,6 @@ const Intoroduction = () => {
     "ラインナップ" | "発売中" | "今後発売"
   >("ラインナップ");
 
-  const [isInView, setIsInView] = useState(false); // ビューポートに入ったかどうかを追跡
-
   // 初期状態を gamesData から取得
   const [bgImage, setBgImage] = useState(gamesData[selectedGenre].bgImage);
   const [gameInfo, setGameInfo] = useState<GameInfo[]>(
@@ -76,15 +74,12 @@ const Intoroduction = () => {
         const isIntoroductionInView =
           rect.top <= 0 && rect.bottom >= window.innerHeight;
 
-        // Intoroductionがビューポートに入ったかを更新
-        setIsInView(isIntoroductionInView);
-
         if (isIntoroductionInView) {
           // 横スクロール操作
           scrollContainer.scrollLeft += event.deltaY;
 
-          // 背景位置の更新
-          const scrollFactor = 0.2;
+          // スクロール方向に応じて背景位置を進める・戻す
+          const scrollFactor = 0.2; // 背景が進むスピード
           setBackgroundPosition(
             (prevPosition) => prevPosition - event.deltaY * scrollFactor
           );
@@ -92,14 +87,16 @@ const Intoroduction = () => {
           const contentWidth = scrollContainer.clientWidth / 1.3;
           const scrollLeft = scrollContainer.scrollLeft;
 
-          // コメントの更新
+          // スクロール位置に基づいて表示するコメントを更新
           const visibleIndex = Math.min(
-            Math.round(scrollLeft / contentWidth),
+            Math.round(scrollLeft / contentWidth), // 変更: Math.floor から Math.round へ
             gameInfo.length - 1
           );
+
+          // コメントの更新
           setComment(commentList[visibleIndex]);
 
-          // スクロールがコンテンツの終わりに達した場合の処理
+          // スクロールがコンテンツの終わりに到達した場合
           if (
             scrollLeft + scrollContainer.clientWidth >=
             scrollContainer.scrollWidth
@@ -109,7 +106,7 @@ const Intoroduction = () => {
             setScrollCompleted(false);
           }
 
-          // 横スクロールの制御
+          // スクロールがコンテンツの最初または最後で止まる処理
           if (
             (scrollLeft === 0 && event.deltaY < 0 && !scrollCompleted) ||
             (scrollLeft + scrollContainer.clientWidth ===
@@ -120,7 +117,16 @@ const Intoroduction = () => {
             return;
           }
 
-          // スクロールを途中で止める処理
+          // コンテンツが最初や最後に達したときに背景の動きを止める
+          if (
+            scrollLeft === 0 ||
+            scrollLeft + scrollContainer.clientWidth ===
+              scrollContainer.scrollWidth
+          ) {
+            return;
+          }
+
+          // コンテンツが途中の場合は背景の動きを継続
           if (scrollLeft > 0 && event.deltaY < 0) {
             event.preventDefault();
           }
@@ -128,35 +134,33 @@ const Intoroduction = () => {
       }
     };
 
+    const handleTouchStart = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      if (touch) {
+        event.preventDefault();
+      }
+    };
+
     const handleTouchMove = (event: TouchEvent) => {
+      const touch = event.touches[0];
       const scrollContainer = scrollContainerRef.current;
-      if (scrollContainer) {
-        const deltaY = event.touches[0].clientY - event.touches[0].screenY;
-
-        // 横スクロール操作
-        scrollContainer.scrollLeft += deltaY;
-
-        event.preventDefault(); // 縦スクロールを防止
+      if (scrollContainer && touch) {
+        // 縦スクロールを横スクロールに変換
+        scrollContainer.scrollLeft += -touch.clientY;
+        event.preventDefault();
       }
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
     window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [scrollCompleted, gameInfo, commentList]);
-
-  useEffect(() => {
-    // Intoroductionがビューポートに入った時、縦スクロールを無効化
-    if (isInView) {
-      document.body.style.overflowY = "hidden"; // 縦スクロールを無効化
-    } else {
-      document.body.style.overflowY = "auto"; // 縦スクロールを有効化
-    }
-  }, [isInView]);
 
   return (
     <div ref={intoroductionRef} className="relative w-full h-screen z-20">
@@ -181,6 +185,7 @@ const Intoroduction = () => {
         <div
           ref={scrollContainerRef}
           className="flex overflow-x-auto whitespace-nowrap w-full px-8 space-x-4 scroll-container"
+          style={{ overflowY: "hidden" }} // 縦スクロール無効化
         >
           {gameInfo.map((game) => (
             <Link href={`${game.url}`} key={game.id}>
