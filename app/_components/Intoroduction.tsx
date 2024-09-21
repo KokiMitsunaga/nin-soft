@@ -131,8 +131,7 @@ const Intoroduction = () => {
     const handleTouchMove = (event: TouchEvent) => {
       const scrollContainer = scrollContainerRef.current;
       if (scrollContainer) {
-        const touch = event.touches[0];
-        const deltaY = touch.clientY - touch.screenY;
+        const deltaY = event.touches[0].clientY - event.touches[0].screenY;
 
         // 横スクロール操作
         scrollContainer.scrollLeft += deltaY;

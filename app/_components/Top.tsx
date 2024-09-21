@@ -50,7 +50,7 @@ const Top = () => {
   }, [isFinalText]);
 
   return (
-    <main>
+    <main className="overflow-y-auto h-screen">
       <div className="relative flex justify-center h-screen w-screen">
         <Image
           src="/bg.svg"
