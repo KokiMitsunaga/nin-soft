@@ -48,13 +48,20 @@ const Intoroduction = () => {
     value: "ラインナップ" | "発売中" | "今後発売"
   ) => {
     setSelectedGenre(value);
-    console.log("選択されたジャンル:", value);
 
     // ジャンルに応じて状態を更新
     setBgImage(gamesData[value].bgImage);
     setGameInfo(gamesData[value].gameInfo);
     setCommentList(gamesData[value].commentList);
     setHumanImage(gamesData[value].humanImage);
+
+    // 横スクロール位置をリセット
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = 0;
+    }
+
+    // コメントもリセットして最初のコンテンツに対応するコメントを表示
+    setComment(gamesData[value].commentList[0]);
   };
 
   useEffect(() => {
@@ -80,14 +87,14 @@ const Intoroduction = () => {
           const contentWidth = scrollContainer.clientWidth / 1.3;
           const scrollLeft = scrollContainer.scrollLeft;
 
+          // スクロール位置に基づいて表示するコメントを更新
           const visibleIndex = Math.min(
-            Math.floor(scrollLeft / contentWidth),
+            Math.round(scrollLeft / contentWidth), // 変更: Math.floor から Math.round へ
             gameInfo.length - 1
           );
 
-          if (scrollLeft % contentWidth > contentWidth * 0.05) {
-            setComment(commentList[visibleIndex]);
-          }
+          // コメントの更新
+          setComment(commentList[visibleIndex]);
 
           // スクロールがコンテンツの終わりに到達した場合
           if (
