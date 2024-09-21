@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 interface GenreSelectBoxProps {
   onSelectChange: (value: "ラインナップ" | "発売中" | "今後発売") => void;
 }
