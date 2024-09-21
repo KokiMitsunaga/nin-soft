@@ -4,8 +4,8 @@ import React from "react";
 const ListButton = () => {
   return (
     <div>
-      <Link href="/list" className="absolute bottom-4 right-4 z-40">
-        <button className="bg-black text-white px-4 py-2 rounded-lg">
+      <Link href="/list">
+        <button className="text-xl font-bold bg-gray-200 p-2 rounded-md hover:bg-gray-300 w-full mt-10">
           一覧画面へ
         </button>
       </Link>
