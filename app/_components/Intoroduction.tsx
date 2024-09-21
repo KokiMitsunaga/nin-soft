@@ -32,7 +32,6 @@ const Intoroduction = () => {
     "ラインナップ" | "発売中" | "今後発売"
   >("ラインナップ");
 
-  // 初期状態を gamesData から取得
   const [bgImage, setBgImage] = useState(gamesData[selectedGenre].bgImage);
   const [gameInfo, setGameInfo] = useState<GameInfo[]>(
     gamesData[selectedGenre].gameInfo
@@ -49,37 +48,32 @@ const Intoroduction = () => {
   ) => {
     setSelectedGenre(value);
 
-    // ジャンルに応じて状態を更新
     setBgImage(gamesData[value].bgImage);
     setGameInfo(gamesData[value].gameInfo);
     setCommentList(gamesData[value].commentList);
     setHumanImage(gamesData[value].humanImage);
 
-    // 横スクロール位置をリセット
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft = 0;
     }
 
-    // コメントもリセットして最初のコンテンツに対応するコメントを表示
     setComment(gamesData[value].commentList[0]);
   };
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
       const scrollContainer = scrollContainerRef.current;
-      const intoroduction = intoroductionRef.current;
+      const intoroductioin = intoroductionRef.current;
 
-      if (scrollContainer && intoroduction) {
-        const rect = intoroduction.getBoundingClientRect();
+      if (scrollContainer && intoroductioin) {
+        const rect = intoroductioin.getBoundingClientRect();
         const isIntoroductionInView =
           rect.top <= 0 && rect.bottom >= window.innerHeight;
 
         if (isIntoroductionInView) {
-          // 横スクロール操作
           scrollContainer.scrollLeft += event.deltaY;
 
-          // スクロール方向に応じて背景位置を進める・戻す
-          const scrollFactor = 0.2; // 背景が進むスピード
+          const scrollFactor = 0.2;
           setBackgroundPosition(
             (prevPosition) => prevPosition - event.deltaY * scrollFactor
           );
@@ -87,16 +81,13 @@ const Intoroduction = () => {
           const contentWidth = scrollContainer.clientWidth / 1.3;
           const scrollLeft = scrollContainer.scrollLeft;
 
-          // スクロール位置に基づいて表示するコメントを更新
           const visibleIndex = Math.min(
-            Math.round(scrollLeft / contentWidth), // 変更: Math.floor から Math.round へ
+            Math.round(scrollLeft / contentWidth),
             gameInfo.length - 1
           );
 
-          // コメントの更新
           setComment(commentList[visibleIndex]);
 
-          // スクロールがコンテンツの終わりに到達した場合
           if (
             scrollLeft + scrollContainer.clientWidth >=
             scrollContainer.scrollWidth
@@ -106,7 +97,6 @@ const Intoroduction = () => {
             setScrollCompleted(false);
           }
 
-          // スクロールがコンテンツの最初または最後で止まる処理
           if (
             (scrollLeft === 0 && event.deltaY < 0 && !scrollCompleted) ||
             (scrollLeft + scrollContainer.clientWidth ===
@@ -117,7 +107,6 @@ const Intoroduction = () => {
             return;
           }
 
-          // コンテンツが最初や最後に達したときに背景の動きを止める
           if (
             scrollLeft === 0 ||
             scrollLeft + scrollContainer.clientWidth ===
@@ -126,7 +115,6 @@ const Intoroduction = () => {
             return;
           }
 
-          // コンテンツが途中の場合は背景の動きを継続
           if (scrollLeft > 0 && event.deltaY < 0) {
             event.preventDefault();
           }
@@ -134,33 +122,42 @@ const Intoroduction = () => {
       }
     };
 
-    const handleTouchStart = (event: TouchEvent) => {
-      const touch = event.touches[0];
-      if (touch) {
-        event.preventDefault();
-      }
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      const touch = event.touches[0];
+    const handleGlobalScroll = (event: WheelEvent) => {
       const scrollContainer = scrollContainerRef.current;
-      if (scrollContainer && touch) {
-        // 縦スクロールを横スクロールに変換
-        scrollContainer.scrollLeft += -touch.clientY;
+      if (
+        scrollContainer &&
+        scrollContainer.scrollLeft > 0 &&
+        !scrollCompleted
+      ) {
         event.preventDefault();
       }
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: false });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("wheel", handleGlobalScroll, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("wheel", handleGlobalScroll);
     };
   }, [scrollCompleted, gameInfo, commentList]);
+
+  useEffect(() => {
+    // スマホでのスクロール挙動を改善
+    const handleTouchMove = (event: TouchEvent) => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft +=
+          event.touches[0].clientY - event.touches[0].clientX;
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
 
   return (
     <div ref={intoroductionRef} className="relative w-full h-screen z-20">
@@ -181,11 +178,9 @@ const Intoroduction = () => {
       <ListButton />
 
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-30">
-        {/* 横スクロールコンテナ */}
         <div
           ref={scrollContainerRef}
           className="flex overflow-x-auto whitespace-nowrap w-full px-8 space-x-4 scroll-container"
-          style={{ overflowY: "hidden" }} // 縦スクロール無効化
         >
           {gameInfo.map((game) => (
             <Link href={`${game.url}`} key={game.id}>
@@ -215,14 +210,12 @@ const Intoroduction = () => {
           ))}
         </div>
 
-        {/* コメント表示エリア */}
         <div className="absolute pt-20 px-8 flex justify-center items-center w-full">
           <div className="h-28 p-2 w-full bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden">
             <div className={NunitoFont.className}>{comment}</div>
           </div>
         </div>
 
-        {/* 人物画像 */}
         <div
           className="z-30 flex justify-center items-center"
           style={{
