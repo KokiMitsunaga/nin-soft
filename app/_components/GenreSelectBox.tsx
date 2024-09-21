@@ -9,7 +9,7 @@ const GenreSelectBox = ({ onSelectChange }: GenreSelectBoxProps) => {
   };
 
   return (
-    <div className="absolute top-10 left-6 z-40">
+    <div className="">
       <select onChange={handleChange} className="text-xl font-bold">
         <option value="ラインナップ">ラインナップ</option>
         <option value="発売中">発売中</option>

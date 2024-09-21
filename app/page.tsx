@@ -2,7 +2,7 @@ import React from "react";
 import Top from "./_components/Top";
 import Intoroduction from "./_components/Intoroduction";
 
-const page = () => {
+const Page = () => {
   return (
     <div>
       <Top />
@@ -11,4 +11,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

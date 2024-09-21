@@ -26,7 +26,7 @@ const Top = () => {
     if (isFinalText) {
       const timer = setTimeout(() => {
         setShowScrollPrompt(true); // 3秒後にScrollPromptを表示
-      }, 3000); // 3秒後
+      }, 3000);
       return () => clearTimeout(timer);
     }
 
@@ -43,14 +43,23 @@ const Top = () => {
           return nextIndex;
         });
         setAnimateOut(false);
-      }, 600); // アニメーションの長さに応じて調整（例: 600ms）
-    }, 3000); // 3秒ごとに切り替え
+      }, 600);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isFinalText]);
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    // スクロール量が一定以上ならIntoroduction画面に移動
+    if (e.currentTarget.scrollTop > window.innerHeight * 0.8) {
+      document
+        .getElementById("introduction")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <main className="overflow-y-auto h-screen">
+    <main className="h-screen overflow-hidden" onScroll={handleScroll}>
       <div className="relative flex justify-center h-screen w-screen">
         <Image
           src="/bg.svg"
