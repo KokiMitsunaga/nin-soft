@@ -156,13 +156,13 @@ const Intoroduction = () => {
           {/* 横スクロールコンテナ */}
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-hidden whitespace-nowrap w-full px-8 space-x-96 scroll-container"
-            style={{ paddingLeft: "16vw", paddingRight: "16vw" }} // 左に少し余白を調整
+            className="flex overflow-x-hidden overflow-y-hidden whitespace-nowrap w-full px-8 space-x-96 scroll-container"
+            style={{ paddingLeft: "16vw", paddingRight: "16vw" }}
           >
             {gameInfo.map((game) => (
               <Link href={`${game.url}`} key={game.id}>
                 <div
-                  className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-10 rounded-3xl" // 背景白、パディング追加
+                  className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-10 rounded-3xl"
                   style={{
                     width: "calc(100vw / 2)",
                     marginTop: "calc(100vh - 90vh)",
@@ -174,7 +174,7 @@ const Intoroduction = () => {
                     layout="responsive"
                     width={900}
                     height={600}
-                    className="object-cover rounded-3xl w-full h-full"
+                    className="rounded-3xl w-full h-full"
                   />
                   {/* タイトルと説明を重ねて表示 */}
                   <div
