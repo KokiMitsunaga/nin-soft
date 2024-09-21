@@ -1,0 +1,170 @@
+{
+  "ラインナップ": {
+    "bgImage": "/underground.jpg",
+    "gameInfo": [
+      {
+        "id": 1,
+        "image": "/game.jpg",
+        "alt": "ゲーム1",
+        "description": "ゲーム1の説明",
+        "url": "/game1"
+      },
+      {
+        "id": 2,
+        "image": "/game.jpg",
+        "alt": "ゲーム2",
+        "description": "ゲーム2の説明",
+        "url": "/game2"
+      },
+      {
+        "id": 3,
+        "image": "/game.jpg",
+        "alt": "ゲーム3",
+        "description": "ゲーム3の説明",
+        "url": "/game3"
+      },
+      {
+        "id": 4,
+        "image": "/game.jpg",
+        "alt": "ゲーム4",
+        "description": "ゲーム4の説明",
+        "url": "/game4"
+      },
+      {
+        "id": 5,
+        "image": "/game.jpg",
+        "alt": "ゲーム5",
+        "description": "ゲーム5の説明",
+        "url": "/game5"
+      },
+      {
+        "id": 6,
+        "image": "/game.jpg",
+        "alt": "ゲーム6",
+        "description": "ゲーム6の説明",
+        "url": "/game6"
+      }
+    ],
+    "commentList": [
+      "コメント1",
+      "コメント2",
+      "コメント3",
+      "コメント4",
+      "コメント5",
+      "コメント6"
+    ],
+    "humanImage": "/human.png"
+  },
+  "発売中": {
+    "bgImage": "/undersea.jpg",
+    "gameInfo": [
+      {
+        "id": 1,
+        "image": "/game.jpg",
+        "alt": "ゲーム1",
+        "description": "ゲーム1の説明",
+        "url": "/game1"
+      },
+      {
+        "id": 2,
+        "image": "/game.jpg",
+        "alt": "ゲーム2",
+        "description": "ゲーム2の説明",
+        "url": "/game2"
+      },
+      {
+        "id": 3,
+        "image": "/game.jpg",
+        "alt": "ゲーム3",
+        "description": "ゲーム3の説明",
+        "url": "/game3"
+      },
+      {
+        "id": 4,
+        "image": "/game.jpg",
+        "alt": "ゲーム4",
+        "description": "ゲーム4の説明",
+        "url": "/game4"
+      },
+      {
+        "id": 5,
+        "image": "/game.jpg",
+        "alt": "ゲーム5",
+        "description": "ゲーム5の説明",
+        "url": "/game5"
+      },
+      {
+        "id": 6,
+        "image": "/game.jpg",
+        "alt": "ゲーム6",
+        "description": "ゲーム6の説明",
+        "url": "/game6"
+      }
+    ],
+    "commentList": [
+      "コメント1",
+      "コメント2",
+      "コメント3",
+      "コメント4",
+      "コメント5",
+      "コメント6"
+    ],
+    "humanImage": "/swimHuman.png"
+  },
+  "今後発売": {
+    "bgImage": "/magma.jpg",
+    "gameInfo": [
+      {
+        "id": 1,
+        "image": "/game.jpg",
+        "alt": "ゲーム1",
+        "description": "ゲーム1の説明",
+        "url": "/game1"
+      },
+      {
+        "id": 2,
+        "image": "/game.jpg",
+        "alt": "ゲーム2",
+        "description": "ゲーム2の説明",
+        "url": "/game2"
+      },
+      {
+        "id": 3,
+        "image": "/game.jpg",
+        "alt": "ゲーム3",
+        "description": "ゲーム3の説明",
+        "url": "/game3"
+      },
+      {
+        "id": 4,
+        "image": "/game.jpg",
+        "alt": "ゲーム4",
+        "description": "ゲーム4の説明",
+        "url": "/game4"
+      },
+      {
+        "id": 5,
+        "image": "/game.jpg",
+        "alt": "ゲーム5",
+        "description": "ゲーム5の説明",
+        "url": "/game5"
+      },
+      {
+        "id": 6,
+        "image": "/game.jpg",
+        "alt": "ゲーム6",
+        "description": "ゲーム6の説明",
+        "url": "/game6"
+      }
+    ],
+    "commentList": [
+      "コメント1",
+      "コメント2",
+      "コメント3",
+      "コメント4",
+      "コメント5",
+      "コメント6"
+    ],
+    "humanImage": "/flyHuman.png"
+  }
+}
