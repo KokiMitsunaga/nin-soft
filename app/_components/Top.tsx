@@ -3,13 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import ScrollPrompt from "./ScrollPrompt";
-import { Nunito_Sans } from "next/font/google";
 import { gsap } from "gsap";
-
-const NunitoFont = Nunito_Sans({
-  weight: "600",
-  subsets: ["latin"],
-});
 
 const textList = [
   "ゲーム紹介ステージへようこそ",
@@ -109,7 +103,7 @@ const Top = () => {
             style={{ height: "20vh" }}
           >
             <div
-              className={`${NunitoFont.className} ${
+              className={` font-tsuku ${
                 animateOut ? "animate-slideOut" : "animate-slideIn"
               }`}
             >

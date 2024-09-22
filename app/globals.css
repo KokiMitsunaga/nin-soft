@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  visibility: hidden;
+}
+html.wf-active {
+  visibility: visible;
+}
+
 .yellow-stroke {
   stroke: white;
   stroke-width: 0.5;
