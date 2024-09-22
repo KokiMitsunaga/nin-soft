@@ -60,15 +60,14 @@ const Top = () => {
     // 最初の右への移動アニメーション
     tl.to(humanRef.current, {
       duration: 4, // 4秒かけて
-      x: "50vw", // 横方向に画面中央へ
+      x: "43vw", // 横方向に画面中央へ
       ease: "power2.out", // 滑らかなアニメーション
-      transform: "translateX(-50%)", // 正確な中央位置調整
     });
 
     // 右上への移動アニメーション
     tl.to(humanRef.current, {
       duration: 3, // 3秒かけて
-      x: "75vw", // 右方向にさらに移動
+      x: "68vw", // 右方向にさらに移動
       y: "-28vh", // 上方向に移動
       ease: "power2.out", // 滑らかなアニメーション
     });
@@ -105,7 +104,7 @@ const Top = () => {
           backgroundPosition: "bottom", // 画像の下側を固定
         }}
       >
-        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-6xl">
+        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-5xl">
           <div
             className="w-4/5 p-10 bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden"
             style={{ height: "20vh" }}
@@ -140,7 +139,7 @@ const Top = () => {
       </div>
 
       {showScrollPrompt && (
-        <div className="absolute bottom-10 w-full flex justify-center">
+        <div className="absolute bottom-44 w-full flex justify-center">
           <ScrollPrompt />
         </div>
       )}
