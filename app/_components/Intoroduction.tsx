@@ -108,7 +108,9 @@ const Intoroduction = () => {
             scrollLeft >= maxScrollLeft &&
             visibleIndex === gameInfo.length - 1
           ) {
-            setScrollCompleted(true);
+            // 最後のコンテンツでも縦スクロールを無効化
+            setScrollCompleted(false);
+            event.preventDefault(); // 縦スクロールの禁止
           } else if (scrollLeft === 0) {
             setScrollCompleted(false);
           }
@@ -123,7 +125,7 @@ const Intoroduction = () => {
         scrollContainer.scrollLeft > 0 &&
         !scrollCompleted
       ) {
-        event.preventDefault();
+        event.preventDefault(); // 縦スクロールを無効化
       }
     };
 
@@ -151,8 +153,22 @@ const Intoroduction = () => {
         />
 
         {/* ジャンル表示 */}
-        <div className="absolute top-4 left-0 w-full h-10 flex items-center justify-center z-40 bg-black bg-opacity-50 text-white text-2xl font-bold">
+        <div className="absolute top-9 left-4 w-auto h-10 flex items-center justify-start z-40 bg-black bg-opacity-50 text-white text-2xl font-bold px-4 rounded">
           {selectedGenre}
+        </div>
+
+        {/* 現在のコンテンツ位置を示す丸点表示 */}
+        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-40 flex space-x-10 items-center">
+          {gameInfo.map((_, index) => (
+            <div
+              key={index}
+              className={`w-6 h-6 rounded-full ${
+                commentList.indexOf(comment) === index
+                  ? "bg-white"
+                  : "bg-gray-400"
+              }`}
+            ></div>
+          ))}
         </div>
 
         <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-start z-30">
