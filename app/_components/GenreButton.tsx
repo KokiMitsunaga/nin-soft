@@ -11,7 +11,7 @@ const GenreButton: React.FC<GenreButtonProps> = ({ label, image, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="text-xl font-bold bg-gray-200 p-2 rounded-md hover:bg-gray-300 flex flex-col items-center"
+      className="text-lg 2xl:text-xl font-bold bg-gray-200 p-2 rounded-md hover:bg-gray-300 flex flex-col items-center"
       style={{ height: "15vh" }}
     >
       {/* 画像の追加 */}
