@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSSファイル */
+html {
+  visibility: hidden;
+}
+html.wf-active {
+  visibility: visible;
+}
+
 .yellow-stroke {
   stroke: white;
-  stroke-width: 0.5; /* 必要に応じて枠線の太さを調整 */
+  stroke-width: 0.5;
 }
