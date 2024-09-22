@@ -7,6 +7,9 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      tsuku: ["fot-tsukuardgothic-std", "sans-serif"],
+    },
     extend: {
       keyframes: {
         slideIn: {
