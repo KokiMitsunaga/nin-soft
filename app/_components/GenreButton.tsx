@@ -3,7 +3,7 @@ import Image from "next/image";
 interface GenreButtonProps {
   label: string;
   image: string;
-  isSelected: boolean; // 追加
+  isSelected: boolean;
   onClick: () => void;
 }
 

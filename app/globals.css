@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSSファイル */
 .yellow-stroke {
   stroke: white;
-  stroke-width: 0.5; /* 必要に応じて枠線の太さを調整 */
+  stroke-width: 0.5;
 }

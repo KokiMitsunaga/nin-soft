@@ -14,7 +14,7 @@ const NunitoFont = Nunito_Sans({
 const textList = [
   "ゲーム紹介ステージへようこそ",
   "僕と一緒にゲームを探す冒険に出よう",
-  "Here We Go！",
+  "Here We Go!",
 ];
 
 const Top = () => {
@@ -23,7 +23,6 @@ const Top = () => {
   const [isFinalText, setIsFinalText] = useState(false);
   const [showScrollPrompt, setShowScrollPrompt] = useState(false);
 
-  // human.png のリファレンスを作成
   const humanRef = useRef(null);
 
   useEffect(() => {
@@ -59,29 +58,29 @@ const Top = () => {
 
     // 最初の右への移動アニメーション
     tl.to(humanRef.current, {
-      duration: 4, // 4秒かけて
-      x: "43vw", // 横方向に画面中央へ
-      ease: "power2.out", // 滑らかなアニメーション
+      duration: 4,
+      x: "43vw",
+      ease: "power2.out",
     });
 
     // 右上への移動アニメーション
     tl.to(humanRef.current, {
-      duration: 3, // 3秒かけて
-      x: "68vw", // 右方向にさらに移動
-      y: "-28vh", // 上方向に移動
-      ease: "power2.out", // 滑らかなアニメーション
+      duration: 3,
+      x: "68vw",
+      y: "-28vh",
+      ease: "power2.out",
     });
 
     // 下に移動しながらフェードアウトするアニメーション
     tl.to(humanRef.current, {
-      duration: 2, // 2秒かけて
+      duration: 2,
       y: "11vh",
-      clipPath: "inset(0% 0% 100% 0%)", // 下から上にクリップ
-      ease: "power2.out", // 滑らかなアニメーション
+      clipPath: "inset(0% 0% 100% 0%)",
+      ease: "power2.out",
     });
 
     return () => {
-      tl.kill(); // タイムラインをクリーンアップ
+      tl.kill();
     };
   }, []);
 
@@ -101,7 +100,7 @@ const Top = () => {
         style={{
           backgroundImage: 'url("/bg.png")',
           backgroundSize: "cover",
-          backgroundPosition: "bottom", // 画像の下側を固定
+          backgroundPosition: "bottom",
         }}
       >
         <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-4xl 2xl:text-5xl">
@@ -121,7 +120,7 @@ const Top = () => {
       </div>
 
       <div
-        ref={humanRef} // human.png の要素にリファレンスを追加
+        ref={humanRef}
         className="absolute"
         style={{
           width: "14vw",
