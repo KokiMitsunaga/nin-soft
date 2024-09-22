@@ -104,7 +104,10 @@ const Intoroduction = () => {
           }
 
           // スクロールがコンテンツの終わりに到達した場合
-          if (scrollLeft >= maxScrollLeft) {
+          if (
+            scrollLeft >= maxScrollLeft &&
+            visibleIndex === gameInfo.length - 1
+          ) {
             setScrollCompleted(true);
           } else if (scrollLeft === 0) {
             setScrollCompleted(false);
@@ -195,9 +198,9 @@ const Intoroduction = () => {
             ))}
           </div>
           <div
-            className="flex items-center"
+            className="absolute flex items-center justify-center"
             style={{
-              marginTop: "calc(100vh - 95vh)",
+              marginTop: "calc(100vh - 28vh)",
               marginLeft: "calc(100vw - 94vw)",
             }}
           >
