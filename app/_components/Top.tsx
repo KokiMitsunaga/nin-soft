@@ -105,8 +105,11 @@ const Top = () => {
           backgroundPosition: "bottom", // 画像の下側を固定
         }}
       >
-        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-xl">
-          <div className=" h-1/5 p-10 w-2/5 bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden">
+        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-6xl">
+          <div
+            className="w-4/5 p-10 bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden"
+            style={{ height: "20vh" }}
+          >
             <div
               className={`${NunitoFont.className} ${
                 animateOut ? "animate-slideOut" : "animate-slideIn"
