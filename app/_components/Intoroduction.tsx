@@ -151,7 +151,7 @@ const Intoroduction = () => {
         />
 
         {/* ジャンル表示 */}
-        <div className="absolute top-10 left-0 w-full h-16 flex items-center justify-center z-40 bg-black bg-opacity-50 text-white text-2xl font-bold">
+        <div className="absolute top-4 left-0 w-full h-10 flex items-center justify-center z-40 bg-black bg-opacity-50 text-white text-2xl font-bold">
           {selectedGenre}
         </div>
 
@@ -165,7 +165,7 @@ const Intoroduction = () => {
             {gameInfo.map((game) => (
               <Link href={`${game.url}`} key={game.id}>
                 <div
-                  className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-10 rounded-3xl"
+                  className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-4 rounded-3xl"
                   style={{
                     width: "calc(100vw / 2)",
                     marginTop: "calc(100vh - 90vh)",
