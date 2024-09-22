@@ -78,37 +78,31 @@ const Intoroduction = () => {
           // 横スクロール操作
           scrollContainer.scrollLeft += event.deltaY;
 
-          const contentWidth = scrollContainer.clientWidth / 1.3;
-          const scrollLeft = scrollContainer.scrollLeft;
-          const maxScrollLeft =
+          const contentWidth =
             scrollContainer.scrollWidth - scrollContainer.clientWidth;
+          const scrollLeft = scrollContainer.scrollLeft;
 
-          // スクロール位置に基づいて表示するコメントを更新
-          let visibleIndex = Math.round(scrollLeft / contentWidth);
-
-          // 正方向のスクロール時、最後のコンテンツで正確にコメントを表示
-          if (event.deltaY > 0) {
-            visibleIndex = Math.min(visibleIndex, gameInfo.length - 1);
-          } else {
-            // 逆方向のスクロール時、インデックスが負の数になるのを防ぐ
-            visibleIndex = Math.max(visibleIndex, 0);
-          }
+          // 各コンテンツの幅の割合に基づいてコメント表示を調整
+          const segmentWidth = contentWidth / gameInfo.length;
+          const visibleIndex = Math.min(
+            Math.max(Math.floor(scrollLeft / segmentWidth), 0),
+            gameInfo.length - 1
+          );
 
           // コメントの更新
           setComment(commentList[visibleIndex]);
 
           // 背景画像のスクロール操作
-          if (scrollLeft < maxScrollLeft && scrollLeft > 0) {
+          if (scrollLeft < contentWidth && scrollLeft > 0) {
             const scrollFactor = 1; // 背景が進むスピード
             setBackgroundPosition(-(scrollLeft * scrollFactor));
           }
 
           // スクロールがコンテンツの終わりに到達した場合
           if (
-            scrollLeft >= maxScrollLeft &&
+            scrollLeft >= contentWidth &&
             visibleIndex === gameInfo.length - 1
           ) {
-            // 最後のコンテンツでも縦スクロールを無効化
             setScrollCompleted(false);
             event.preventDefault(); // 縦スクロールの禁止
           } else if (scrollLeft === 0) {
