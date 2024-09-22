@@ -104,7 +104,7 @@ const Top = () => {
           backgroundPosition: "bottom", // 画像の下側を固定
         }}
       >
-        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-5xl">
+        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-4xl 2xl:text-5xl">
           <div
             className="w-4/5 p-10 bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden"
             style={{ height: "20vh" }}
@@ -124,9 +124,9 @@ const Top = () => {
         ref={humanRef} // human.png の要素にリファレンスを追加
         className="absolute"
         style={{
-          width: "calc(100vw - 86vw)",
-          height: "calc(100vh - 60vh)",
-          top: "calc(100vh - 49vh)",
+          width: "14vw",
+          height: "40vh",
+          top: "51vh",
         }}
       >
         <Image

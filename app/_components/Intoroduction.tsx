@@ -183,8 +183,8 @@ const Intoroduction = () => {
                 <div
                   className="inline-block flex-shrink-0 link-container overflow-hidden relative group bg-white p-4 rounded-3xl"
                   style={{
-                    width: "calc(100vw / 2)",
-                    marginTop: "calc(100vh - 90vh)",
+                    width: "50vw",
+                    marginTop: "10vh",
                   }}
                 >
                   <Image
@@ -199,7 +199,7 @@ const Intoroduction = () => {
                   <div
                     className="link-content absolute bottom-0 left-0 w-full bg-black bg-opacity-60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-lg"
                     style={{
-                      padding: "calc(100vh - 95vh)",
+                      padding: "5vh",
                     }}
                   >
                     <h3 className="font-bold text-xl 2xl:text-2xl">
@@ -216,8 +216,8 @@ const Intoroduction = () => {
           <div
             className="absolute flex items-center justify-center"
             style={{
-              marginTop: "calc(100vh - 28vh)",
-              marginLeft: "calc(100vw - 94vw)",
+              marginTop: "72vh",
+              marginLeft: "6vw",
             }}
           >
             {/* 人物画像 */}
@@ -225,8 +225,8 @@ const Intoroduction = () => {
               <div
                 className="relative overflow-hidden rounded-full"
                 style={{
-                  width: "calc(100vh - 88vh)",
-                  height: "calc(100vw - 88vw)",
+                  width: "12vh",
+                  height: "12vw",
                 }}
               >
                 <Image
@@ -240,16 +240,16 @@ const Intoroduction = () => {
             </div>
             {/* コメント表示エリア */}
             <div
-              className="flex justify-center items-center"
+              className="flex justify-center items-center text-xl 2xl:text-2xl"
               style={{
-                marginBottom: "calc(100vh - 88vh)",
+                marginBottom: "12vh",
               }}
             >
               <div
                 className="p-2 bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden"
                 style={{
-                  width: "calc(100vw - 80vw)",
-                  height: "calc(100vh - 89vh)",
+                  width: "40vw",
+                  height: "11vh",
                 }}
               >
                 <div className={NunitoFont.className}>{comment}</div>
