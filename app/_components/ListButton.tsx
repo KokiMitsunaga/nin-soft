@@ -7,7 +7,7 @@ const ListButton = () => {
     <div className="flex justify-center w-full">
       <Link href="/list" className="w-full">
         <button
-          className="text-lg 2xl:text-xl font-bold bg-gray-200 p-2 rounded-md hover:bg-gray-300 flex flex-col items-center w-full"
+          className="text-lg 2xl:text-xl font-bold bg-gray-200 p-2 rounded-md hover:bg-gray-300 flex flex-col items-center w-full transition-transform duration-300 transform hover:scale-105"
           style={{ height: "15vh" }}
         >
           <div className="w-full h-32 relative mb-2" style={{ height: "12vh" }}>
