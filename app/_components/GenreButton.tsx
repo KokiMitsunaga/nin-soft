@@ -12,9 +12,10 @@ const GenreButton: React.FC<GenreButtonProps> = ({ label, image, onClick }) => {
     <button
       onClick={onClick}
       className="text-xl font-bold bg-gray-200 p-2 rounded-md hover:bg-gray-300 flex flex-col items-center"
+      style={{ height: "15vh" }}
     >
       {/* 画像の追加 */}
-      <div className="w-full h-32 relative mb-2">
+      <div className="w-full relative mb-2" style={{ height: "12vh" }}>
         <Image
           src={image}
           alt={`${label} image`}
