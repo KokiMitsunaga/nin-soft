@@ -11,7 +11,7 @@ const NunitoFont = Nunito_Sans({
 });
 
 const textList = [
-  "ゲームラインナップページへようこそ",
+  "ゲーム紹介ステージへようこそ",
   "僕と一緒にゲームを探す冒険に出よう",
   "Here We Go！",
 ];
