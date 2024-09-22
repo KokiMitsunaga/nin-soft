@@ -255,7 +255,10 @@ const Intoroduction = () => {
 
       {/* Sidebar */}
       <div className="w-1/6 h-full">
-        <Sidebar onSelectChange={handleSelectChange} />
+        <Sidebar
+          selectedGenre={selectedGenre}
+          onSelectChange={handleSelectChange}
+        />
       </div>
     </div>
   );
