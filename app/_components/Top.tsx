@@ -97,13 +97,13 @@ const Top = () => {
           backgroundPosition: "bottom",
         }}
       >
-        <div className="absolute pt-20 px-8 flex justify-center items-center w-full text-4xl 2xl:text-5xl">
+        <div className="absolute pt-20 px-8 flex justify-center items-center w-full font-tsuku font-extrabold text-4xl 2xl:text-5xl">
           <div
             className="w-4/5 p-10 bg-white bg-opacity-85 rounded-3xl flex items-center justify-center overflow-hidden"
             style={{ height: "20vh" }}
           >
             <div
-              className={` font-tsuku ${
+              className={`${
                 animateOut ? "animate-slideOut" : "animate-slideIn"
               }`}
             >
