@@ -234,7 +234,7 @@ const Intoroduction = () => {
             </div>
             {/* コメント表示エリア */}
             <div
-              className="flex justify-center items-center text-xl 2xl:text-2xl"
+              className="flex justify-center items-center font-tsuku font-bold text-xl 2xl:text-2xl"
               style={{
                 marginBottom: "12vh",
               }}
